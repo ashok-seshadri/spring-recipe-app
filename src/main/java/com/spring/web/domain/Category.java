@@ -19,7 +19,7 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String categoryName;
+	private String description;
 	
 	@ManyToMany
 	private Set<Recipe> recipes;

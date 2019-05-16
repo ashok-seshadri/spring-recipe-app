@@ -6,4 +6,5 @@ import com.spring.web.domain.Recipe;
 
 public interface RecipeRepository extends CrudRepository<Recipe, Long>{
 
+	
 }

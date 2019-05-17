@@ -11,6 +11,10 @@ import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
 import com.spring.web.domain.Recipe;
@@ -26,6 +30,14 @@ public class IndexControllerTest {
 	@Mock
 	Model model;
 	
+	
+	@Test
+	public void testMockMvc() throws Exception {
+		MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+		mockMvc.perform(MockMvcRequestBuilders.get("/"))
+			   .andExpect(MockMvcResultMatchers.status().isOk())
+			   .andExpect(MockMvcResultMatchers.view().name("index"));
+	}
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
